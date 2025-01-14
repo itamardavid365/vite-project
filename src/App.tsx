@@ -14,6 +14,7 @@ import CreateCard from "./components/CreateCard.js";
 import SearchCard from "./components/SearchCard.js";
 import { ToastContainer } from "react-toastify";
 import About from "./components/About.js";
+import Page404 from "./components/Page404.js";
 
 export interface UserDetails {
   isLoggedIn: boolean,
@@ -35,7 +36,7 @@ function App() {
 
 
   const [searchValue, setSearchValue] = useState<string>("");
-  const [decodedToken, setDecodedToken] = useState<object>()
+  const [decodedToken, setDecodedToken] = useState<DecodedToken>()
   const [darkTheme, setDarkTheme] = useState<boolean>(false);
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
   const [userDetails, setUserDetails] = useState<UserDetails>({
@@ -74,14 +75,15 @@ function App() {
               <Route path="/" element={<Navigate to="/cards/1" />} />
               <Route path="/cards" element={<Navigate to="/cards/1" />} />
               <Route path="/cards/:pageNum" element={<Cards />} />
-              {loggedIn && <Route path="/my-cards" element={<MyCards />} />}
+              {loggedIn && decodedToken?.isAdmin || decodedToken?.isBusiness && <Route path="/my-cards" element={<MyCards />} />}
               {loggedIn && <Route path="/my-fav" element={<MyFav />} />}
-              {loggedIn && <Route path="/create-card" element={<CreateCard />} />}
+              {loggedIn && decodedToken?.isAdmin || decodedToken?.isBusiness && <Route path="/create-card" element={<CreateCard />} />}
               {loggedIn && <Route path="/my-profile" element={<About />} />}
               <Route path="/card/:id" element={<CardDetails />} />
               <Route path="/card-search/:search" element={<SearchCard />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/*" element={<Page404 />} />
             </Routes>
           </Router>
         </div>
