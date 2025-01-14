@@ -84,7 +84,9 @@ const MyCards: FunctionComponent<MyCardsProps> = () => {
                                 )
                                 }
                                 <div className="position-absolute d-flex flex-column">
-                                    <i className="fa-solid fa-phone p-2 text-white border border-1 bg-success" />
+                                    <a href={`tel:${card.phone}`}>
+                                        <i className="fa-solid fa-phone p-2 text-white border border-1 bg-success" />
+                                    </a>
                                     {loggedIn && (
                                         <LikeFeacher card={card} decodedTokenId={decodedToken._id} />
                                     )}

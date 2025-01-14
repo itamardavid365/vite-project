@@ -56,7 +56,9 @@ const MyFav: FunctionComponent<MyFavProps> = () => {
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={card._id}>
                             <div className="card h-100 position-relative">
                                 <div className="position-absolute d-flex flex-column">
-                                    <i className="fa-solid fa-phone p-2 text-white border border-1 bg-success" />
+                                    <a href={`tel:${card.phone}`}>
+                                        <i className="fa-solid fa-phone p-2 text-white border border-1 bg-success" />
+                                    </a>
                                     {loggedIn && (
                                         <LikeFeacher card={card} decodedTokenId={decodedToken._id} />
                                     )}
