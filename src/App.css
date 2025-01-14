@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+@media only screen and (min-width: 992px) {
+  .form-login {
+    width: 30rem;
+  }
+}
+
+.fixed-image {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+i,
+nav li {
+  cursor: pointer;
+}
+
+
+
+.white-bg {
+  background: rgb(255, 255, 255) !important;
+  min-height: 100vh;
+  height: max-content;
+  width: 100vw;
+}
+
+#main {
+  min-height: 100vh;
+  height: max-content;
+}
